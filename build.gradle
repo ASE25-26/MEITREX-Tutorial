@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.meitrex'
+version = '1.0-SNAPSHOT'
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+}
+
+test {
+    useJUnit()
+}

@@ -24,6 +24,9 @@ out/
 # VS Code
 .vscode/
 
+# Downloaded libraries (for local IDE support)
+/lib/
+
 # Eclipse
 .project
 .classpath
