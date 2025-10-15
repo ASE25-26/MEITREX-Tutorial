@@ -41,17 +41,20 @@ jobs:
           test-name: HelloMEITREX - Prints exact greeting
           command: >-
             bash -lc '
-            set -e;
+            set -euo pipefail;
             mkdir -p out;
-            javac -d out src/main/java/Main.java;
-            # ausführen, CR entfernen, erste Zeile nehmen und vergleichen
-            out=$(java -cp out Main | tr -d "\r" | sed -n "1p");
-            if [ "$out" = "Hello MEITREX" ]; then
+            # Kompilieren nach out/ und mit UTF-8, falls Editor anders speichert
+            javac -encoding UTF-8 -d out src/main/java/Main.java;
+
+            # Programm ausführen, CR und NL entfernen -> exakter Vergleich
+            actual="$(java -cp out Main | tr -d "\r\n")";
+            expected="Hello MEITREX";
+
+            if [ "$actual" = "$expected" ]; then
               exit 0;
             else
-              echo "Expected: Hello MEITREX";
-              echo "Got:      $out";
-              echo "Byte dump:";
+              echo "Expected: $expected";
+              echo "Got (first line, raw bytes):";
               java -cp out Main | hexdump -C || true;
               exit 1;
             fi'
