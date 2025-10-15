@@ -38,26 +38,8 @@ jobs:
         id: print-hello
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: HelloMEITREX - Prints exact greeting
-          command: >-
-            bash -lc '
-            set -euo pipefail;
-            mkdir -p out;
-            # Kompilieren nach out/ und mit UTF-8, falls Editor anders speichert
-            javac -encoding UTF-8 -d out src/main/java/Main.java;
-
-            # Programm ausführen, CR und NL entfernen -> exakter Vergleich
-            actual="$(java -cp out Main | tr -d "\r\n")";
-            expected="Hello MEITREX";
-
-            if [ "$actual" = "$expected" ]; then
-              exit 0;
-            else
-              echo "Expected: $expected";
-              echo "Got (first line, raw bytes):";
-              java -cp out Main | hexdump -C || true;
-              exit 1;
-            fi'
+          test-name: HelloMEITREXTest - PrintsExactGreeting
+          command: 'bash -lc "set -e; mkdir -p out; javac -encoding UTF-8 -d out src/main/java/Main.java; output=$(java -cp out Main); if [ \"$output\" = \"Hello MEITREX\" ]; then exit 0; else echo \"Expected: Hello MEITREX\"; echo \"Got: $output\"; exit 1; fi"'
           timeout: 1
           max-score: 5
 
