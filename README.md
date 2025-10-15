@@ -1,7 +1,7 @@
 # Hello MEITREX
 
 Willkommen zu deiner **ersten MEITREX-Programmieraufgabe**!   
-In diesem Mini-Tutorial lernst du, wie du mit **GitHub Classroom** arbeitest, deine Lösung mit **git** pushst und wie **automatische Tests** deinen Code überprüfen.
+In diesem Tutorial lernst du, wie du mit **GitHub Classroom** arbeitest, deine Lösung mit **Git** pushst und wie **automatische Tests** deinen Code überprüfen.
 Das Ergebnis der automatisierten Tests wird dir in dem Code Assignment in MEITREX angezeigt.
 
 ---
