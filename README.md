@@ -35,7 +35,8 @@ Diese Aufgabe soll dir zeigen, wie du deinen Code mit **Git** einreichst und dei
    git commit -m "Hello MEITREX Aufgabe gelöst"
    git push
    ```
-8. Schau in MEITREX nach der Bewertung.
+8. GitHub Classroom führt die automatisierten Tests aus (Das kann bis zu einer Minute dauern)
+9. Schau in MEITREX nach der Bewertung.
 
 ---
 

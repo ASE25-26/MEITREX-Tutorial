@@ -2,20 +2,30 @@ plugins {
     id 'java'
 }
 
-group = 'com.meitrex'
-version = '1.0-SNAPSHOT'
+group = 'de.meitrex'
+version = '1.0.0'
 
-sourceCompatibility = '17'
-targetCompatibility = '17'
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.13.2'
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 test {
-    useJUnit()
+    useJUnitPlatform()
+
+    testLogging {
+        events = ['failed', 'skipped']
+        exceptionFormat = 'short'
+    }
 }
