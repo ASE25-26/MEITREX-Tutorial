@@ -1,30 +1,26 @@
 package hello;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-public class HelloMEITREXTest {
+class HelloMEITREXTest {
 
     @Test
-    public void testPrintsHelloMEITREX() {
-        // Standardausgabe abfangen
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
+    void testPrintsHelloMEITREX() {
         PrintStream originalOut = System.out;
-        System.setOut(new PrintStream(out));
-
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(buffer));
         try {
-            // Main aufrufen
-            Main.main(new String[]{});
+            Main.main(new String[0]);
         } finally {
             System.setOut(originalOut);
         }
-
-        // Ausgabe prüfen (egal ob mit oder ohne Zeilenumbruch)
-        String output = out.toString().replace("\r", "").replace("\n", "");
-        assertEquals("Hello MEITREX", output, 
-            "Das Programm muss exakt 'Hello MEITREX' ausgeben.");
+        // Accept with or without trailing newline
+        String out = buffer.toString().replace("\r", "");
+        if (out.endsWith("\n")) out = out.substring(0, out.length() - 1);
+        assertEquals("Hello MEITREX", out, "Expected exact output: Hello MEITREX");
     }
 }

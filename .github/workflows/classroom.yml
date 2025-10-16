@@ -20,7 +20,11 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-          
+
+      - name: Make Gradle wrapper executable (if present)
+        run: |
+          if [ -f ./gradlew ]; then chmod +x ./gradlew; fi
+
       - name: Compile Main.java
         id: compile
         uses: classroom-resources/autograding-command-grader@v1
@@ -30,7 +34,7 @@ jobs:
             bash -lc '
             set -e;
             mkdir -p out;
-            javac -d out src/main/java/Main.java'
+            javac -d out src/main/java/hello/Main.java'
           timeout: 1
           max-score: 5
 
@@ -39,7 +43,13 @@ jobs:
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: HelloMEITREXTest - PrintsExactGreeting
-          command: 'gradle test --tests "hello.HelloMEITREXTest.testPrintsHelloMEITREX"'
+          command: >-
+            bash -lc '
+            if [ -f ./gradlew ]; then
+              ./gradlew test --tests "hello.HelloMEITREXTest.testPrintsHelloMEITREX" --no-daemon --warning-mode all
+            else
+              gradle test --tests "hello.HelloMEITREXTest.testPrintsHelloMEITREX" --no-daemon --warning-mode all
+            fi'
           timeout: 2
           max-score: 5
 
