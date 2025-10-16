@@ -34,7 +34,7 @@ jobs:
             bash -lc '
             set -e;
             mkdir -p out;
-            javac -d out src/main/java/hello/Main.java'
+            javac -d out src/main/java/Main.java'
           timeout: 1
           max-score: 5
 
@@ -46,9 +46,9 @@ jobs:
           command: >-
             bash -lc '
             if [ -f ./gradlew ]; then
-              ./gradlew test --tests "hello.HelloMEITREXTest.testPrintsHelloMEITREX" --no-daemon --warning-mode all
+              ./gradlew test --tests "HelloMEITREXTest.testPrintsHelloMEITREX" --no-daemon --warning-mode all
             else
-              gradle test --tests "hello.HelloMEITREXTest.testPrintsHelloMEITREX" --no-daemon --warning-mode all
+              gradle test --tests "HelloMEITREXTest.testPrintsHelloMEITREX" --no-daemon --warning-mode all
             fi'
           timeout: 2
           max-score: 5

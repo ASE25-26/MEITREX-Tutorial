@@ -20,8 +20,8 @@ Diese Aufgabe soll dir zeigen, wie du deinen Code mit **Git** einreichst und dei
 
 ## So gehst du vor
 
-1. Klicke in **MEITREX** auf **„Aufgabe starten“** – du wirst zu GitHub Classroom weitergeleitet.
-2. Akzeptiere das Coding Assignment in GitHub Classroom.  
+1. Klicke in **MEITREX** auf **„START ASSIGNMENT“** – du wirst zu GitHub Classroom weitergeleitet.
+2. Akzeptiere das Coding Assignment in GitHub Classroom (**Accept this assignment**).  
 3. Ein persönliches Repository (z. B. `meitrex-tutorial-code-assignment-username`) wird erstellt.  
 4. Klone es auf deinen Rechner:  
    ```bash
